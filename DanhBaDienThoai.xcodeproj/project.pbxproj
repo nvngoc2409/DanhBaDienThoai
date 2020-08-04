@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FF24CFAD9DF3955944DB875 /* Pods_DanhBaDienThoai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */; };
 		7E8D633424D2AB960037BB81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D633324D2AB960037BB81 /* AppDelegate.swift */; };
 		7E8D633824D2AB960037BB81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D633724D2AB960037BB81 /* ViewController.swift */; };
 		7E8D633B24D2AB960037BB81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8D633924D2AB960037BB81 /* Main.storyboard */; };
@@ -20,9 +21,16 @@
 		7E8D635524D2BB670037BB81 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8D635324D2BB670037BB81 /* HomeVC.xib */; };
 		7E8D635824D2BC490037BB81 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D635624D2BC490037BB81 /* HomeCell.swift */; };
 		7E8D635924D2BC490037BB81 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8D635724D2BC490037BB81 /* HomeCell.xib */; };
+		7E935F0924D8F265000B407C /* AddContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E935F0724D8F265000B407C /* AddContactVC.swift */; };
+		7E935F0A24D8F265000B407C /* AddContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E935F0824D8F265000B407C /* AddContactVC.xib */; };
+		7E935F0E24D90731000B407C /* ContatDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E935F0C24D90731000B407C /* ContatDetailVC.swift */; };
+		7E935F0F24D90731000B407C /* ContatDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E935F0D24D90731000B407C /* ContatDetailVC.xib */; };
+		7EC7DF8C24D9551A0032017E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7DF8B24D9551A0032017E /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2FDC5C0FEB13E732500D026B /* Pods-DanhBaDienThoai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanhBaDienThoai.debug.xcconfig"; path = "Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai.debug.xcconfig"; sourceTree = "<group>"; };
+		7B9808E4C3087D349BA909ED /* Pods-DanhBaDienThoai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanhBaDienThoai.release.xcconfig"; path = "Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai.release.xcconfig"; sourceTree = "<group>"; };
 		7E8D633024D2AB960037BB81 /* DanhBaDienThoai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanhBaDienThoai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8D633324D2AB960037BB81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E8D633724D2AB960037BB81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +46,12 @@
 		7E8D635324D2BB670037BB81 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		7E8D635624D2BC490037BB81 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		7E8D635724D2BC490037BB81 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
+		7E935F0724D8F265000B407C /* AddContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactVC.swift; sourceTree = "<group>"; };
+		7E935F0824D8F265000B407C /* AddContactVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContactVC.xib; sourceTree = "<group>"; };
+		7E935F0C24D90731000B407C /* ContatDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatDetailVC.swift; sourceTree = "<group>"; };
+		7E935F0D24D90731000B407C /* ContatDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContatDetailVC.xib; sourceTree = "<group>"; };
+		7EC7DF8B24D9551A0032017E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanhBaDienThoai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +59,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF24CFAD9DF3955944DB875 /* Pods_DanhBaDienThoai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F3156170ABA63E01206E8FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2FDC5C0FEB13E732500D026B /* Pods-DanhBaDienThoai.debug.xcconfig */,
+				7B9808E4C3087D349BA909ED /* Pods-DanhBaDienThoai.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		75882443D4B72AB3CF4ACFF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E8D632724D2AB960037BB81 = {
 			isa = PBXGroup;
 			children = (
 				7E8D633224D2AB960037BB81 /* DanhBaDienThoai */,
 				7E8D633124D2AB960037BB81 /* Products */,
+				4F3156170ABA63E01206E8FD /* Pods */,
+				75882443D4B72AB3CF4ACFF7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,8 +105,10 @@
 		7E8D633224D2AB960037BB81 /* DanhBaDienThoai */ = {
 			isa = PBXGroup;
 			children = (
+				7E935F0B24D90582000B407C /* ContatDetailVC */,
+				7E935F0624D8F22D000B407C /* AddContactVC */,
 				7E8D635124D2BB1E0037BB81 /* HomeVC */,
-				7E8D635024D2BB0B0037BB81 /* DataaBase */,
+				7E8D635024D2BB0B0037BB81 /* Model */,
 				7E8D633324D2AB960037BB81 /* AppDelegate.swift */,
 				7E8D633724D2AB960037BB81 /* ViewController.swift */,
 				7E8D633924D2AB960037BB81 /* Main.storyboard */,
@@ -79,18 +116,19 @@
 				7E8D633E24D2AB980037BB81 /* LaunchScreen.storyboard */,
 				7E8D634124D2AB980037BB81 /* Info.plist */,
 				7E8D634A24D2B07E0037BB81 /* ObjectPhoneContact.swift */,
+				7EC7DF8B24D9551A0032017E /* Helper.swift */,
 			);
 			path = DanhBaDienThoai;
 			sourceTree = "<group>";
 		};
-		7E8D635024D2BB0B0037BB81 /* DataaBase */ = {
+		7E8D635024D2BB0B0037BB81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				7E8D634824D2ACF70037BB81 /* PhoneContacts.swift */,
 				7E8D634C24D2B2D20037BB81 /* Contact.swift */,
 				7E8D634E24D2B54B0037BB81 /* DBContact.swift */,
 			);
-			path = DataaBase;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7E8D635124D2BB1E0037BB81 /* HomeVC */ = {
@@ -104,6 +142,24 @@
 			path = HomeVC;
 			sourceTree = "<group>";
 		};
+		7E935F0624D8F22D000B407C /* AddContactVC */ = {
+			isa = PBXGroup;
+			children = (
+				7E935F0724D8F265000B407C /* AddContactVC.swift */,
+				7E935F0824D8F265000B407C /* AddContactVC.xib */,
+			);
+			path = AddContactVC;
+			sourceTree = "<group>";
+		};
+		7E935F0B24D90582000B407C /* ContatDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				7E935F0C24D90731000B407C /* ContatDetailVC.swift */,
+				7E935F0D24D90731000B407C /* ContatDetailVC.xib */,
+			);
+			path = ContatDetailVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E8D634424D2AB980037BB81 /* Build configuration list for PBXNativeTarget "DanhBaDienThoai" */;
 			buildPhases = (
+				686853964FD0B09A68A3B2A7 /* [CP] Check Pods Manifest.lock */,
 				7E8D632C24D2AB960037BB81 /* Sources */,
 				7E8D632D24D2AB960037BB81 /* Frameworks */,
 				7E8D632E24D2AB960037BB81 /* Resources */,
+				24FC174297DACB91946C5272 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,17 +225,64 @@
 				7E8D633D24D2AB980037BB81 /* Assets.xcassets in Resources */,
 				7E8D633B24D2AB960037BB81 /* Main.storyboard in Resources */,
 				7E8D635924D2BC490037BB81 /* HomeCell.xib in Resources */,
+				7E935F0F24D90731000B407C /* ContatDetailVC.xib in Resources */,
+				7E935F0A24D8F265000B407C /* AddContactVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24FC174297DACB91946C5272 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		686853964FD0B09A68A3B2A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DanhBaDienThoai-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7E8D632C24D2AB960037BB81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EC7DF8C24D9551A0032017E /* Helper.swift in Sources */,
+				7E935F0E24D90731000B407C /* ContatDetailVC.swift in Sources */,
 				7E8D634F24D2B54B0037BB81 /* DBContact.swift in Sources */,
+				7E935F0924D8F265000B407C /* AddContactVC.swift in Sources */,
 				7E8D635424D2BB670037BB81 /* HomeVC.swift in Sources */,
 				7E8D633824D2AB960037BB81 /* ViewController.swift in Sources */,
 				7E8D633424D2AB960037BB81 /* AppDelegate.swift in Sources */,
@@ -326,6 +431,7 @@
 		};
 		7E8D634524D2AB980037BB81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FDC5C0FEB13E732500D026B /* Pods-DanhBaDienThoai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -343,6 +449,7 @@
 		};
 		7E8D634624D2AB980037BB81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B9808E4C3087D349BA909ED /* Pods-DanhBaDienThoai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.2.1)
+  - IQKeyboardManagerSwift (6.5.5)
+  - SkyFloatingLabelTextField (3.8.0)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift
+  - SkyFloatingLabelTextField
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SkyFloatingLabelTextField
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 4a9c78c83241f2fa10453e60aa112824e0446b83
+
+COCOAPODS: 1.9.3
