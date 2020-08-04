@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -31,11 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        database.update(contact: testUpd!)
 //        arrContact = database.read()
         let vc = HomeVC(nibName: "HomeVC", bundle: nil)
-        
         let nv = UINavigationController(rootViewController: vc)
         window?.rootViewController = nv
         window?.makeKeyAndVisible()
         
+        IQKeyboardManager.shared.enable = true
         return true
     }
 
@@ -46,3 +47,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension UIView {
+
+  @IBInspectable var cornerRadius: CGFloat {
+
+   get{
+        return layer.cornerRadius
+    }
+    set {
+        layer.cornerRadius = newValue
+        layer.masksToBounds = newValue > 0
+    }
+  }
+
+  @IBInspectable var borderWidth: CGFloat {
+    get {
+        return layer.borderWidth
+    }
+    set {
+        layer.borderWidth = newValue
+    }
+  }
+
+  @IBInspectable var borderColor: UIColor? {
+    get {
+        return UIColor(cgColor: layer.borderColor!)
+    }
+    set {
+        layer.borderColor = borderColor?.cgColor
+    }
+  }
+}
