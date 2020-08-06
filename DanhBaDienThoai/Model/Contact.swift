@@ -36,6 +36,14 @@ class Contact: NSObject {
         self.phoneNumber = phoneNumber
         self.email = email
     }
+    init(contact:Contact) {
+        self.id = contact.id
+        self.firstName = contact.firstName
+        self.lastName = contact.lastName
+        self.avatarData = contact.avatarData
+        self.phoneNumber = contact.phoneNumber
+        self.email = contact.email
+    }
     override init() {
         super.init()
     }

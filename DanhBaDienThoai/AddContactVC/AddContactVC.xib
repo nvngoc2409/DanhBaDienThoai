@@ -137,7 +137,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7B4-Ov-Veh" secondAttribute="trailing" id="Ou1-LK-RkC"/>
                 <constraint firstItem="7B4-Ov-Veh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xn6-Ay-mUx"/>
                 <constraint firstItem="7B4-Ov-Veh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="d8u-pm-jnJ"/>
-                <constraint firstItem="yJb-FP-Y2H" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="2:6" id="dew-pz-RWC"/>
+                <constraint firstItem="yJb-FP-Y2H" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:3" id="dew-pz-RWC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="85"/>

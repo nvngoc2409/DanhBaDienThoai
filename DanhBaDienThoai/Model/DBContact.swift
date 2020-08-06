@@ -63,7 +63,7 @@ class DBContact {
         }
         let insertStatementString = "INSERT INTO contact (id, firstName,lastName, avatarData,phoneNumber,email) VALUES (?, ?, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
-        let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+//        let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             
@@ -121,11 +121,11 @@ class DBContact {
         return contactns
     }
     
-    func deleteByID(id:Int) {
+    func deleteByID(id:String) {
         let deleteStatementStirng = "DELETE FROM contact WHERE id = ?;"
         var deleteStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
-            sqlite3_bind_int(deleteStatement, 1, Int32(id))
+            sqlite3_bind_text(deleteStatement, 1, NSString(string: id).utf8String, -1, nil)
             if sqlite3_step(deleteStatement) == SQLITE_DONE {
                 print("Successfully deleted row.")
             } else {
@@ -153,15 +153,14 @@ class DBContact {
     }
     
     func update(contact:Contact)  {
-        let insertStatement: OpaquePointer? = nil
-        let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+//        let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
-        let updateStatementString = "UPDATE contact SET firstName = '\(contact.firstName)',lastName = '\(contact.lastName)',avatarData = '?',phoneNumber = '\(contact.phoneNumber)',email = '\(contact.email)' WHERE id = '\(contact.id)';"
+        let updateStatementString = "UPDATE contact SET firstName = '\(contact.firstName)',lastName = '\(contact.lastName)',avatarData = ?,phoneNumber = '\(contact.phoneNumber)',email = '\(contact.email)' WHERE id = '\(contact.id)';"
         var updateStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if let data = contact.avatarData {
                 let dataSave = NSData(data: data)
-                sqlite3_bind_blob(insertStatement, 4, dataSave.bytes, Int32(dataSave.length), SQLITE_TRANSIENT);
+                sqlite3_bind_blob(updateStatement, 1, dataSave.bytes, Int32(dataSave.length), SQLITE_TRANSIENT);
             }
             if sqlite3_step(updateStatement) == SQLITE_DONE {
                 print("Successfully updated row.")
@@ -172,5 +171,33 @@ class DBContact {
             print("UPDATE statement could not be prepared")
         }
         sqlite3_finalize(updateStatement)
+    }
+    func getContact(id:String) -> [Contact] {
+        let queryStatementString = "SELECT * FROM contact WHERE id = '\(id)';"
+        var queryStatement: OpaquePointer? = nil
+        var contactns : [Contact] = []
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = String(describing: String(cString: sqlite3_column_text(queryStatement, 0)))
+                let firstName = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let lastName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                var avatarData:Data?
+                if let dataBlob = sqlite3_column_blob(queryStatement, 3){
+                    let dataBlobLength = sqlite3_column_bytes(queryStatement, 3)
+                    avatarData = Data(bytes: dataBlob, count: Int(dataBlobLength))
+                }
+                let phoneNumber = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
+                let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 5)))
+                
+                
+                contactns.append(Contact(id: id, firstName: firstName, lastName: lastName, avatarData: avatarData, phoneNumber: phoneNumber, email: email))
+                print("Query Result:")
+                print("\(id) | \(firstName) | \(lastName)| | \(phoneNumber)| \(email)")
+            }
+        } else {
+            print("SELECT statement could not be prepared")
+        }
+        sqlite3_finalize(queryStatement)
+        return contactns
     }
 }

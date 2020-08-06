@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Foundation
 class AddContactVC: UIViewController {
 
     @IBOutlet weak var tfEmail: UITextField!
@@ -16,6 +16,11 @@ class AddContactVC: UIViewController {
     @IBOutlet weak var tfFirstName: UITextField!
     @IBOutlet weak var btnAddPhoto: UIButton!
     @IBOutlet weak var imgAvata: UIImageView!
+    
+    let picker = UIImagePickerController()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "New Contact"
@@ -24,7 +29,63 @@ class AddContactVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+        initUI()
+    }
+    
+    
+    @IBAction func handleAddPhoto(_ sender: Any) {
+        chooseAvata()
+    }
+    @IBAction func handleAddPhoto_img(_ sender: Any) {
+        chooseAvata()
+    }
+    func chooseAvata()  {
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertAction.Style.default)
+            {
+                UIAlertAction in
+                self.openCamera()
+        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertAction.Style.default)
+            {
+                UIAlertAction in
+                self.openGallary()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+            {
+                UIAlertAction in
+        }
+
+        // Add the actions
+        
+        picker.delegate = self
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func openCamera(){
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
+            picker.sourceType = UIImagePickerController.SourceType.camera
+            self.present(picker, animated: true, completion: nil)
+        }else{
+//            let alert = UIAlertView()
+//            alert.title = "Warning"
+//            alert.message = "You don't have camera"
+//            alert.addButtonWithTitle("OK")
+//            alert.show()
+        }
+    }
+    func openGallary(){
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+
+}
+extension AddContactVC {
+    func initUI()  {
+       self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+        self.imgAvata.image = #imageLiteral(resourceName: "Bitmap")
         setupNv()
     }
     func setupNv() {
@@ -40,7 +101,15 @@ class AddContactVC: UIViewController {
     @objc func Done() {
         if checkTf() {
             let database:DBContact = DBContact.init()
-            let contact:Contact = Contact.init(id: UUID.init().uuidString, firstName: tfFirstName.text ?? "", lastName: tfLastName.text ?? "", avatarData: nil, phoneNumber: tfPhoneNumber.text ?? "", email: tfEmail.text ?? "")
+            let img:UIImage = #imageLiteral(resourceName: "Bitmap")
+            var contact:Contact = Contact.init()
+            if self.imgAvata.image == img {
+                contact = Contact.init(id: UUID.init().uuidString, firstName: tfFirstName.text ?? "", lastName: tfLastName.text ?? "", avatarData: nil, phoneNumber: tfPhoneNumber.text ?? "", email: tfEmail.text ?? "")
+
+            }else{
+                contact = Contact.init(id: UUID.init().uuidString, firstName: tfFirstName.text ?? "", lastName: tfLastName.text ?? "", avatarData: self.imgAvata.image?.jpegData(compressionQuality: 0.1), phoneNumber: tfPhoneNumber.text ?? "", email: tfEmail.text ?? "")
+
+            }
             database.insert(contactIns: contact)
             self.dismiss(animated: true, completion: nil)
         }
@@ -53,11 +122,19 @@ class AddContactVC: UIViewController {
             return true
         }
     }
-    @IBAction func handleAddPhoto(_ sender: Any) {
-    }
-    @IBAction func handleAddPhoto_img(_ sender: Any) {
-    }
-    
-    
+}
 
+extension AddContactVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    //MARK:UIImagePickerControllerDelegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as! UIImage
+        self.imgAvata.image = image
+        self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
