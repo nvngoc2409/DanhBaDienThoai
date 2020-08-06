@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3FF24CFAD9DF3955944DB875 /* Pods_DanhBaDienThoai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */; };
+		7E60653324DA56B100FC6D49 /* EditContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60653124DA56B100FC6D49 /* EditContactVC.swift */; };
+		7E60653424DA56B100FC6D49 /* EditContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E60653224DA56B100FC6D49 /* EditContactVC.xib */; };
 		7E8D633424D2AB960037BB81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D633324D2AB960037BB81 /* AppDelegate.swift */; };
 		7E8D633824D2AB960037BB81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D633724D2AB960037BB81 /* ViewController.swift */; };
 		7E8D633B24D2AB960037BB81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8D633924D2AB960037BB81 /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		2FDC5C0FEB13E732500D026B /* Pods-DanhBaDienThoai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanhBaDienThoai.debug.xcconfig"; path = "Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9808E4C3087D349BA909ED /* Pods-DanhBaDienThoai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanhBaDienThoai.release.xcconfig"; path = "Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai.release.xcconfig"; sourceTree = "<group>"; };
+		7E60653124DA56B100FC6D49 /* EditContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactVC.swift; sourceTree = "<group>"; };
+		7E60653224DA56B100FC6D49 /* EditContactVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactVC.xib; sourceTree = "<group>"; };
 		7E8D633024D2AB960037BB81 /* DanhBaDienThoai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanhBaDienThoai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8D633324D2AB960037BB81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E8D633724D2AB960037BB81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +76,6 @@
 				2FDC5C0FEB13E732500D026B /* Pods-DanhBaDienThoai.debug.xcconfig */,
 				7B9808E4C3087D349BA909ED /* Pods-DanhBaDienThoai.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -82,6 +85,15 @@
 				AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E60653024DA569200FC6D49 /* EditContactVC */ = {
+			isa = PBXGroup;
+			children = (
+				7E60653124DA56B100FC6D49 /* EditContactVC.swift */,
+				7E60653224DA56B100FC6D49 /* EditContactVC.xib */,
+			);
+			path = EditContactVC;
 			sourceTree = "<group>";
 		};
 		7E8D632724D2AB960037BB81 = {
@@ -105,6 +117,7 @@
 		7E8D633224D2AB960037BB81 /* DanhBaDienThoai */ = {
 			isa = PBXGroup;
 			children = (
+				7E60653024DA569200FC6D49 /* EditContactVC */,
 				7E935F0B24D90582000B407C /* ContatDetailVC */,
 				7E935F0624D8F22D000B407C /* AddContactVC */,
 				7E8D635124D2BB1E0037BB81 /* HomeVC */,
@@ -225,6 +238,7 @@
 				7E8D633D24D2AB980037BB81 /* Assets.xcassets in Resources */,
 				7E8D633B24D2AB960037BB81 /* Main.storyboard in Resources */,
 				7E8D635924D2BC490037BB81 /* HomeCell.xib in Resources */,
+				7E60653424DA56B100FC6D49 /* EditContactVC.xib in Resources */,
 				7E935F0F24D90731000B407C /* ContatDetailVC.xib in Resources */,
 				7E935F0A24D8F265000B407C /* AddContactVC.xib in Resources */,
 			);
@@ -284,6 +298,7 @@
 				7E8D634F24D2B54B0037BB81 /* DBContact.swift in Sources */,
 				7E935F0924D8F265000B407C /* AddContactVC.swift in Sources */,
 				7E8D635424D2BB670037BB81 /* HomeVC.swift in Sources */,
+				7E60653324DA56B100FC6D49 /* EditContactVC.swift in Sources */,
 				7E8D633824D2AB960037BB81 /* ViewController.swift in Sources */,
 				7E8D633424D2AB960037BB81 /* AppDelegate.swift in Sources */,
 				7E8D634B24D2B07E0037BB81 /* ObjectPhoneContact.swift in Sources */,

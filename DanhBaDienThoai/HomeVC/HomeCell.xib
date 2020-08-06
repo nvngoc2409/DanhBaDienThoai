@@ -31,16 +31,32 @@
                                 <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-lS-nbh">
+                                <rect key="frame" x="5" y="53" width="240" height="1"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="8jp-dY-VZX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sdZ-z4-8De" secondAttribute="trailing" constant="5" id="ATA-6M-EdO"/>
+                            <constraint firstItem="wcF-lS-nbh" firstAttribute="leading" secondItem="RjF-sF-L38" secondAttribute="leading" constant="5" id="FN7-0V-5t9"/>
+                            <constraint firstItem="wcF-lS-nbh" firstAttribute="bottom" secondItem="sdZ-z4-8De" secondAttribute="bottom" constant="3" id="IAK-oB-ENa"/>
                             <constraint firstItem="sdZ-z4-8De" firstAttribute="leading" secondItem="RjF-sF-L38" secondAttribute="leading" constant="5" id="LRU-ab-E69"/>
                             <constraint firstItem="iSo-RM-5ZM" firstAttribute="top" secondItem="RjF-sF-L38" secondAttribute="top" constant="5" id="T1p-CN-AeP"/>
                             <constraint firstItem="iSo-RM-5ZM" firstAttribute="leading" secondItem="RjF-sF-L38" secondAttribute="leading" constant="5" id="Uq4-Cy-c8e"/>
                             <constraint firstItem="sdZ-z4-8De" firstAttribute="top" secondItem="iSo-RM-5ZM" secondAttribute="bottom" constant="4" id="YPN-ub-u1i"/>
+                            <constraint firstItem="wcF-lS-nbh" firstAttribute="width" secondItem="RjF-sF-L38" secondAttribute="width" multiplier="0.90566" id="d89-CR-w5D"/>
                             <constraint firstAttribute="trailing" secondItem="iSo-RM-5ZM" secondAttribute="trailing" constant="5" id="lcR-DJ-AOe"/>
+                            <constraint firstAttribute="trailing" secondItem="wcF-lS-nbh" secondAttribute="trailing" id="t9a-Lv-yaG"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="t9a-Lv-yaG"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
