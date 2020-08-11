@@ -10,7 +10,11 @@ import UIKit
 import Foundation
 class ContatDetailVC: UIViewController {
     
+    @IBOutlet weak var btnMessage: UIButton!
     
+    @IBOutlet weak var btnEmail: UIButton!
+    @IBOutlet weak var btnVideo: UIButton!
+    @IBOutlet weak var btnCall: UIButton!
     @IBOutlet weak var lbEmail: UILabel!
     
     @IBOutlet weak var lbPhoneNumber: UILabel!
@@ -108,16 +112,19 @@ extension ContatDetailVC {
         lbEmail.text = contactDel?.email ?? ""
         if contactDel?.avatarData != nil {
             imgAvata.image = UIImage(data: (contactDel?.avatarData)!)
-            self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+            self.imgAvata.layer.cornerRadius = 50
             self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
             
         }else{
             imgAvata.image = #imageLiteral(resourceName: "Bitmap")
-            self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+            self.imgAvata.layer.cornerRadius = 50
             self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
             
         }
-        
+        btnEmail.layer.cornerRadius = 20
+        btnCall.layer.cornerRadius = 20
+        btnVideo.layer.cornerRadius = 20
+        btnMessage.layer.cornerRadius = 20
         
     }
     func initData()  {
