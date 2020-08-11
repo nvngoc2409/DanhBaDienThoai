@@ -100,12 +100,12 @@ extension EditContactVC {
         tfEmail.text = contactEdit?.email ?? ""
         if contactEdit?.avatarData != nil {
             imgAvata.image = UIImage(data: (contactEdit?.avatarData)!)
-            self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+            self.imgAvata.layer.cornerRadius = 50
             self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
 
         }else{
             imgAvata.image = #imageLiteral(resourceName: "Bitmap")
-            self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+            self.imgAvata.layer.cornerRadius = 50
             self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
 
         }

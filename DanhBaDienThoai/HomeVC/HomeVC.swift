@@ -118,7 +118,11 @@ extension HomeVC:UITableViewDataSource{
         view.backgroundColor = #colorLiteral(red: 0.9254091382, green: 0.9255421162, blue: 0.9253800511, alpha: 1)
 //        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 18))
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 30))
-        label.text = convSearchData[section].first?.firstName.first?.uppercased()
+        if convSearchData[section].first?.firstName.count != 0 {
+            label.text = convSearchData[section].first?.firstName.first?.uppercased()
+        }else{
+            label.text = convSearchData[section].first?.lastName.first?.uppercased()
+        }
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 20)
         view.addSubview(label)

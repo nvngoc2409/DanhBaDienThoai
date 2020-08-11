@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DanhBaDienThoai.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>F73EB5287CEC162D5D1E6140B965CDE9D39806C7</string>
+				<key>dateExpires</key>
+				<string>7/8/21</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>F73EB5287CEC162D5D1E6140B965CDE9D39806C7</string>
+						<key>dateExpires</key>
+						<string>7/8/21</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>Alamofire.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>89GPAB334M</string>
+						<key>name</key>
+						<string>Gym Nadz Limited</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>F73EB5287CEC162D5D1E6140B965CDE9D39806C7</string>
+						<key>dateExpires</key>
+						<string>7/8/21</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>IQKeyboardManagerSwift.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>89GPAB334M</string>
+						<key>name</key>
+						<string>Gym Nadz Limited</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>F73EB5287CEC162D5D1E6140B965CDE9D39806C7</string>
+						<key>dateExpires</key>
+						<string>7/8/21</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SkyFloatingLabelTextField.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>89GPAB334M</string>
+						<key>name</key>
+						<string>Gym Nadz Limited</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>F73EB5287CEC162D5D1E6140B965CDE9D39806C7</string>
+						<key>dateExpires</key>
+						<string>7/8/21</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SwiftyJSON.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>89GPAB334M</string>
+						<key>name</key>
+						<string>Gym Nadz Limited</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>89GPAB334M.PhamKhanhHung.DanhBaDienThoai</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>89GPAB334M</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>89GPAB334M.PhamKhanhHung.DanhBaDienThoai</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>DanhBaDienThoai.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>1d834907-4a4c-4688-9503-533e8602eec7</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>89GPAB334M</string>
+				<key>name</key>
+				<string>Gym Nadz Limited</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

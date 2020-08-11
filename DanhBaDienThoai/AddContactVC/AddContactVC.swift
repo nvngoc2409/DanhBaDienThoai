@@ -84,7 +84,7 @@ class AddContactVC: UIViewController {
 }
 extension AddContactVC {
     func initUI()  {
-       self.imgAvata.layer.cornerRadius = self.imgAvata.frame.width / 2
+       self.imgAvata.layer.cornerRadius = 50
         self.imgAvata.image = #imageLiteral(resourceName: "Bitmap")
         setupNv()
     }
