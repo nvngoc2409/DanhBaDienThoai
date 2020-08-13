@@ -8,14 +8,17 @@
 
 import UIKit
 import Foundation
+import KRProgressHUD
+import ContactsUI
+
 class HomeVC: UIViewController {
     
-    let arrr =  PhoneContacts.getContacts()
     let database:DBContact = DBContact.init()
     var arrContact:[Contact] = []
     var searchData:[Contact] = []
     var convSearchData:[[Contact]] = []
-    
+    var refreshControl = UIRefreshControl()
+
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var TvMain: UITableView!
     override func viewDidLoad() {
@@ -25,6 +28,8 @@ class HomeVC: UIViewController {
         TvMain.separatorStyle = .singleLine
         self.SearchBar.delegate = self
         self.TvMain.sectionHeaderHeight = 50
+        self.hideKeyboardWhenTappedAround()
+        TvMain.keyboardDismissMode = .interactive
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +38,10 @@ class HomeVC: UIViewController {
         initData()
         initUI()
         self.SearchBar.endEditing(false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            KRProgressHUD.show()
+            self.getData()
+        })
     }
     
     
@@ -45,26 +54,75 @@ extension HomeVC {
         TvMain.dataSource = self
         TvMain.delegate = self
         TvMain.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellReuseIdentifier: "HomeCell")
-        
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.tintColor = #colorLiteral(red: 0.9764705882, green: 0.2235294118, blue: 0.3882352941, alpha: 1)
+        refreshControl.isHidden = false
     }
+    
+    @objc func refresh() {
+        initData()
+    }
+    
     func initData() {
         
         
         arrContact = database.read()
+        
         if arrContact.count == 0 {
-//        for k in 1...7{
-            for i in arrr {
-                let cont:Contact = Contact.init(contact: i)
-                database.insert(contactIns: cont)
-            }
-            arrContact = database.read()
+            checkPermissionForCNContacts()
+//            getData()
+        } else {
+            searchData = arrContact.sorted(by: { (c1:Contact, c2:Contact) -> Bool in
+                return c1.firstName.lowercased() < c2.firstName.lowercased()
+            })
+            convSearchData = converterArr(arr1d: searchData)
+            TvMain.reloadData()
         }
+    }
+    
+    func getData() {
+        var contactIns:[Contact] = []
+        let arrr =  PhoneContacts.getContacts()
+        for i in arrr {
+            let cont:Contact = Contact.init(contact: i)
+            contactIns.append(cont)
+        }
+        if contactIns.count != 0 {
+            database.insertArrContact(contactIns: contactIns)
+        }
+        arrContact = database.read()
+        
         searchData = arrContact.sorted(by: { (c1:Contact, c2:Contact) -> Bool in
             return c1.firstName.lowercased() < c2.firstName.lowercased()
         })
         convSearchData = converterArr(arr1d: searchData)
-        TvMain.reloadData()
+        DispatchQueue.main.async {
+            self.TvMain.reloadData()
+        }
+        KRProgressHUD.dismiss()
     }
+    
+    func checkPermissionForCNContacts() {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+            case .notDetermined:
+                CNContactStore().requestAccess(for: .contacts, completionHandler: { granted, error in
+                    if granted == true {
+                        KRProgressHUD.show()
+                        self.getData()
+                    }
+                })
+            case .restricted, .denied:
+                // Show custom alert
+                break
+            case .authorized:
+                KRProgressHUD.show()
+                self.getData()
+                break
+            @unknown default:
+                break
+        }
+    }
+    
     func setupNav() {
         let right = UIBarButtonItem(image: #imageLiteral(resourceName: "home_plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.showBranch))
         self.navigationItem.rightBarButtonItem = right
@@ -146,7 +204,8 @@ extension HomeVC:UITableViewDataSource{
 extension HomeVC:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ContatDetailVC(nibName: "ContatDetailVC", bundle: nil)
-        vc.contactDel = Contact.init(contact: searchData[indexPath.row])
+//        vc.idcontact =
+            vc.contactDel = Contact.init(contact: convSearchData[indexPath.section][indexPath.row])
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
@@ -182,3 +241,14 @@ extension HomeVC: UISearchBarDelegate {
     }
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

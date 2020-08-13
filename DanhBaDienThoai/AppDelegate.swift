@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nv = UINavigationController(rootViewController: vc)
         window?.rootViewController = nv
         window?.makeKeyAndVisible()
-        
+        IQKeyboardManager.shared.toolbarTintColor = #colorLiteral(red: 0.9764705882, green: 0.2235294118, blue: 0.3882352941, alpha: 1)
         IQKeyboardManager.shared.enable = true
         return true
     }
@@ -47,34 +47,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension UIView {
-
-  @IBInspectable var cornerRadius: CGFloat {
-
-   get{
-        return layer.cornerRadius
-    }
-    set {
-        layer.cornerRadius = newValue
-        layer.masksToBounds = newValue > 0
-    }
-  }
-
-  @IBInspectable var borderWidth: CGFloat {
-    get {
-        return layer.borderWidth
-    }
-    set {
-        layer.borderWidth = newValue
-    }
-  }
-
-  @IBInspectable var borderColor: UIColor? {
-    get {
-        return UIColor(cgColor: layer.borderColor!)
-    }
-    set {
-        layer.borderColor = newValue?.cgColor
-    }
-  }
-}

@@ -8,6 +8,9 @@ target 'DanhBaDienThoai' do
   pod 'IQKeyboardManagerSwift'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'KRProgressHUD'
+  pod 'SwiftyAttributes'
+  pod 'ReachabilitySwift'
   # Pods for DanhBaDienThoai
 
 end

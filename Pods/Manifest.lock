@@ -1,28 +1,44 @@
 PODS:
   - Alamofire (5.2.1)
   - IQKeyboardManagerSwift (6.5.5)
+  - KRActivityIndicatorView (3.0.5)
+  - KRProgressHUD (3.4.5):
+    - KRActivityIndicatorView (= 3.0.5)
+  - ReachabilitySwift (5.0.0)
   - SkyFloatingLabelTextField (3.8.0)
+  - SwiftyAttributes (5.1.1)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - IQKeyboardManagerSwift
+  - KRProgressHUD
+  - ReachabilitySwift
   - SkyFloatingLabelTextField
+  - SwiftyAttributes
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
+    - KRActivityIndicatorView
+    - KRProgressHUD
+    - ReachabilitySwift
     - SkyFloatingLabelTextField
+    - SwiftyAttributes
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  KRActivityIndicatorView: 912bc0413d98340f384b12a4e1e6aa8f42fb377d
+  KRProgressHUD: df4cdc3a1baf708d4276a089ee34d133fa9a6f3e
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SwiftyAttributes: e3e13891ddac3c62b3d7798d5c3969cea88e62bb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 4a9c78c83241f2fa10453e60aa112824e0446b83
+PODFILE CHECKSUM: 250744363a8b95ad05a2f234dd11df932f9fb558
 
 COCOAPODS: 1.9.3
