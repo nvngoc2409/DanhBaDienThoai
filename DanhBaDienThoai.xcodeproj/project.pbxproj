@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FF24CFAD9DF3955944DB875 /* Pods_DanhBaDienThoai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */; };
+		7E59898A24E2849F00CA2DE4 /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E59898924E2849F00CA2DE4 /* UIViewExtention.swift */; };
 		7E60653324DA56B100FC6D49 /* EditContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60653124DA56B100FC6D49 /* EditContactVC.swift */; };
 		7E60653424DA56B100FC6D49 /* EditContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E60653224DA56B100FC6D49 /* EditContactVC.xib */; };
 		7E8D633424D2AB960037BB81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D633324D2AB960037BB81 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		2FDC5C0FEB13E732500D026B /* Pods-DanhBaDienThoai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanhBaDienThoai.debug.xcconfig"; path = "Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9808E4C3087D349BA909ED /* Pods-DanhBaDienThoai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanhBaDienThoai.release.xcconfig"; path = "Target Support Files/Pods-DanhBaDienThoai/Pods-DanhBaDienThoai.release.xcconfig"; sourceTree = "<group>"; };
+		7E59898924E2849F00CA2DE4 /* UIViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
 		7E60653124DA56B100FC6D49 /* EditContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactVC.swift; sourceTree = "<group>"; };
 		7E60653224DA56B100FC6D49 /* EditContactVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditContactVC.xib; sourceTree = "<group>"; };
 		7E8D633024D2AB960037BB81 /* DanhBaDienThoai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanhBaDienThoai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				7E8D634124D2AB980037BB81 /* Info.plist */,
 				7E8D634A24D2B07E0037BB81 /* ObjectPhoneContact.swift */,
 				7EC7DF8B24D9551A0032017E /* Helper.swift */,
+				7E59898924E2849F00CA2DE4 /* UIViewExtention.swift */,
 			);
 			path = DanhBaDienThoai;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				7E60653324DA56B100FC6D49 /* EditContactVC.swift in Sources */,
 				7E8D633824D2AB960037BB81 /* ViewController.swift in Sources */,
 				7E8D633424D2AB960037BB81 /* AppDelegate.swift in Sources */,
+				7E59898A24E2849F00CA2DE4 /* UIViewExtention.swift in Sources */,
 				7E8D634B24D2B07E0037BB81 /* ObjectPhoneContact.swift in Sources */,
 				7E8D634924D2ACF70037BB81 /* PhoneContacts.swift in Sources */,
 				7E8D635824D2BC490037BB81 /* HomeCell.swift in Sources */,
@@ -456,6 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PhamKhanhHung.DanhBaDienThoai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -475,6 +480,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = PhamKhanhHung.DanhBaDienThoai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

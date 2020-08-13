@@ -53,14 +53,14 @@ class DBContact {
     
     func insert(contactIns:Contact)
     {
-        let contacts = read()
-        for c in contacts
-        {
-            if c.id == contactIns.id
-            {
-                return
-            }
-        }
+//        let contacts = read()
+//        for c in contacts
+//        {
+//            if c.id == contactIns.id
+//            {
+//                return
+//            }
+//        }
         let insertStatementString = "INSERT INTO contact (id, firstName,lastName, avatarData,phoneNumber,email) VALUES (?, ?, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
 //        let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
@@ -91,6 +91,50 @@ class DBContact {
         }
         sqlite3_finalize(insertStatement)
     }
+    
+    func insertArrContact(contactIns:[Contact])
+        {
+    //        let contacts = read()
+    //        for c in contacts
+    //        {
+    //            if c.id == contactIns.id
+    //            {
+    //                return
+    //            }
+    //        }
+            let insertStatementString = "INSERT INTO contact (id, firstName,lastName, avatarData,phoneNumber,email) VALUES (?, ?, ?, ?, ?, ?);"
+            var insertStatement: OpaquePointer? = nil
+    //        let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+            let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+            for item in contactIns {
+                if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+                    
+                    sqlite3_bind_text(insertStatement, 1, NSString(string: item.id).utf8String, -1, nil)
+                    sqlite3_bind_text(insertStatement, 2, NSString(string: item.firstName).utf8String, -1, nil)
+                    sqlite3_bind_text(insertStatement, 3, NSString(string: item.lastName).utf8String, -1, nil)
+                    
+                    //            sqlite3_bind_blob(insertStatement, 4, (contactIns.avatarData as! UnsafeRawPointer), -1, nil)
+                    if let data = item.avatarData {
+                        let dataSave = NSData(data: data)
+                        sqlite3_bind_blob(insertStatement, 4, dataSave.bytes, Int32(dataSave.length), SQLITE_TRANSIENT);
+                    }
+                    
+                    sqlite3_bind_text(insertStatement, 5, NSString(string: item.phoneNumber).utf8String, -1, nil)
+                    sqlite3_bind_text(insertStatement, 6, NSString(string: item.email).utf8String, -1, nil)
+                    
+                    
+                    if sqlite3_step(insertStatement) == SQLITE_DONE {
+                        print("Successfully inserted row.")
+                    } else {
+                        print("Could not insert row.")
+                    }
+                } else {
+                    print("INSERT statement could not be prepared.")
+                }
+                sqlite3_finalize(insertStatement)
+            }
+            
+        }
     
     func read() -> [Contact] {
         let queryStatementString = "SELECT * FROM contact;"

@@ -22,6 +22,7 @@ class ContatDetailVC: UIViewController {
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var imgAvata: UIImageView!
     var contactDel:Contact?
+    var idcontact:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,7 @@ class ContatDetailVC: UIViewController {
         setupNv()
         initData()
     }
+    
     func setupNv() {
         let left = UIBarButtonItem(title: "Contacts", style: .plain, target: self, action: #selector(self.backHome))
         let right = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editContact))
@@ -54,7 +56,7 @@ class ContatDetailVC: UIViewController {
         if contactDel?.phoneNumber == "" {
             Helper.alert(msg: "Phone number is empty. Please try again later! ", target: self)
         }else{
-            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "")
+            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "123")
             guard MFMessageComposeViewController.canSendText() else {
                 return
             }
@@ -66,10 +68,10 @@ class ContatDetailVC: UIViewController {
         }
     }
     @IBAction func handleCall(_ sender: Any) {
-        if contactDel?.phoneNumber == "" {
+        if contactDel?.phoneNumber.count == 0 {
             Helper.alert(msg: "Phone number is empty. Please try again later! ", target: self)
         }else{
-            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "")
+            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "123")
             let phone = "tel://\(phoneNumber)"
             let url = NSURL(string: phone)
             if let url1 = url {
@@ -84,7 +86,7 @@ class ContatDetailVC: UIViewController {
         if contactDel?.phoneNumber == "" {
             Helper.alert(msg: "Phone number is empty. Please try again later! ", target: self)
         }else{
-            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "")
+            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "123")
             let phone = "facetime://\(phoneNumber)"
             let url = NSURL(string: phone)
             if let url1 = url {
@@ -128,9 +130,9 @@ extension ContatDetailVC {
         
     }
     func initData()  {
-        let db:DBContact = DBContact.init()
-        let dbContact:[Contact] = db.getContact(id: contactDel!.id)
-        contactDel = dbContact.first
+//        let db:DBContact = DBContact.init()
+//        let dbContact:[Contact] = db.getContact(id: contactDel!.id)
+//        contactDel = dbContact.first
         initUI()
     }
     func checkPhoneNumber(number:String) -> String {
