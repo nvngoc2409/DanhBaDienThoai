@@ -15,6 +15,7 @@
                 <outlet property="btnVideo" destination="Dvz-I0-ijV" id="bU2-cL-Ue8"/>
                 <outlet property="imgAvata" destination="V83-4L-JaF" id="AhZ-Pk-Lxv"/>
                 <outlet property="lbEmail" destination="Hr4-cB-miW" id="2S6-mU-Apo"/>
+                <outlet property="lbImage" destination="Ncc-HT-FEn" id="j09-11-asZ"/>
                 <outlet property="lbName" destination="2FA-tF-5eT" id="piI-yU-nRP"/>
                 <outlet property="lbPhoneNumber" destination="Dvg-8m-fBF" id="oix-0j-eh5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -34,7 +35,23 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kW-j4-sSU">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="245"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="V83-4L-JaF">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncc-HT-FEn">
+                                            <rect key="frame" x="137.5" y="20" width="100" height="100"/>
+                                            <color key="backgroundColor" red="0.60048884150000004" green="0.61872392890000005" blue="0.66275161500000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="29t-Ba-l84"/>
+                                                <constraint firstAttribute="width" secondItem="Ncc-HT-FEn" secondAttribute="height" multiplier="1:1" id="7co-Yj-spX"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                            <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="50"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V83-4L-JaF">
                                             <rect key="frame" x="137.5" y="20" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="P3p-HH-g3t"/>
@@ -148,11 +165,13 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
+                                        <constraint firstItem="Ncc-HT-FEn" firstAttribute="centerX" secondItem="9kW-j4-sSU" secondAttribute="centerX" id="4cg-JC-9zo"/>
                                         <constraint firstItem="LUa-hI-FFI" firstAttribute="centerX" secondItem="9kW-j4-sSU" secondAttribute="centerX" id="DWa-QL-RaX"/>
                                         <constraint firstItem="2FA-tF-5eT" firstAttribute="centerX" secondItem="9kW-j4-sSU" secondAttribute="centerX" id="JqV-W6-i53"/>
                                         <constraint firstItem="V83-4L-JaF" firstAttribute="top" secondItem="9kW-j4-sSU" secondAttribute="top" constant="20" id="QxL-xN-YjR"/>
                                         <constraint firstItem="V83-4L-JaF" firstAttribute="centerX" secondItem="9kW-j4-sSU" secondAttribute="centerX" id="giZ-JS-Jww"/>
                                         <constraint firstItem="2FA-tF-5eT" firstAttribute="top" secondItem="V83-4L-JaF" secondAttribute="bottom" constant="10" id="jCw-1v-bCG"/>
+                                        <constraint firstItem="Ncc-HT-FEn" firstAttribute="top" secondItem="9kW-j4-sSU" secondAttribute="top" constant="20" id="nFe-Iz-kGw"/>
                                         <constraint firstItem="LUa-hI-FFI" firstAttribute="top" secondItem="2FA-tF-5eT" secondAttribute="bottom" constant="20" id="pRo-BT-pII"/>
                                         <constraint firstAttribute="bottom" secondItem="LUa-hI-FFI" secondAttribute="bottom" constant="10" id="tr9-Lf-1z1"/>
                                     </constraints>
@@ -274,7 +293,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Bitmap" width="338" height="352"/>
         <image name="call" width="23" height="23"/>
         <image name="email" width="28" height="18"/>
         <image name="faceTime" width="30" height="18"/>

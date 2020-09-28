@@ -10,7 +10,6 @@ import Foundation
 import ContactsUI
 import SQLite3
 class PhoneContact: NSObject {
-
     var name: String?
     var avatarData: Data?
     var phoneNumber: [String] = [String]()

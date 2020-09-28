@@ -29,6 +29,7 @@
 		7E935F0E24D90731000B407C /* ContatDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E935F0C24D90731000B407C /* ContatDetailVC.swift */; };
 		7E935F0F24D90731000B407C /* ContatDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E935F0D24D90731000B407C /* ContatDetailVC.xib */; };
 		7EC7DF8C24D9551A0032017E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7DF8B24D9551A0032017E /* Helper.swift */; };
+		7EFBE56224EF5BB1002C2D4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EFBE56124EF5BB1002C2D4F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		7E935F0C24D90731000B407C /* ContatDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatDetailVC.swift; sourceTree = "<group>"; };
 		7E935F0D24D90731000B407C /* ContatDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContatDetailVC.xib; sourceTree = "<group>"; };
 		7EC7DF8B24D9551A0032017E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		7EFBE56124EF5BB1002C2D4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC196C5DC3EFE0B808359BE8 /* Pods_DanhBaDienThoai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanhBaDienThoai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,62 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7E3DD83E24E6877200C302F4 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				7E8D633724D2AB960037BB81 /* ViewController.swift */,
+				7E8D633924D2AB960037BB81 /* Main.storyboard */,
+				7E8D633E24D2AB980037BB81 /* LaunchScreen.storyboard */,
+				7EFBE56124EF5BB1002C2D4F /* GoogleService-Info.plist */,
+				7E8D634124D2AB980037BB81 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		7E3DD83F24E687B200C302F4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				7E8D633C24D2AB980037BB81 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		7E3DD84024E687CE00C302F4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E60653024DA569200FC6D49 /* EditContactVC */,
+				7E935F0B24D90582000B407C /* ContatDetailVC */,
+				7E935F0624D8F22D000B407C /* AddContactVC */,
+				7E8D635124D2BB1E0037BB81 /* HomeVC */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7E3DD84124E6880700C302F4 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				7E8D633324D2AB960037BB81 /* AppDelegate.swift */,
+				7EC7DF8B24D9551A0032017E /* Helper.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		7E3DD84224E6887100C302F4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7E3DD84324E6887B00C302F4 /* Extentions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7E3DD84324E6887B00C302F4 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				7E59898924E2849F00CA2DE4 /* UIViewExtention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		7E60653024DA569200FC6D49 /* EditContactVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,20 +177,12 @@
 		7E8D633224D2AB960037BB81 /* DanhBaDienThoai */ = {
 			isa = PBXGroup;
 			children = (
-				7E60653024DA569200FC6D49 /* EditContactVC */,
-				7E935F0B24D90582000B407C /* ContatDetailVC */,
-				7E935F0624D8F22D000B407C /* AddContactVC */,
-				7E8D635124D2BB1E0037BB81 /* HomeVC */,
+				7E3DD84224E6887100C302F4 /* Utils */,
+				7E3DD84124E6880700C302F4 /* Generic */,
+				7E3DD84024E687CE00C302F4 /* ViewController */,
+				7E3DD83F24E687B200C302F4 /* Resource */,
+				7E3DD83E24E6877200C302F4 /* SupportingFiles */,
 				7E8D635024D2BB0B0037BB81 /* Model */,
-				7E8D633324D2AB960037BB81 /* AppDelegate.swift */,
-				7E8D633724D2AB960037BB81 /* ViewController.swift */,
-				7E8D633924D2AB960037BB81 /* Main.storyboard */,
-				7E8D633C24D2AB980037BB81 /* Assets.xcassets */,
-				7E8D633E24D2AB980037BB81 /* LaunchScreen.storyboard */,
-				7E8D634124D2AB980037BB81 /* Info.plist */,
-				7E8D634A24D2B07E0037BB81 /* ObjectPhoneContact.swift */,
-				7EC7DF8B24D9551A0032017E /* Helper.swift */,
-				7E59898924E2849F00CA2DE4 /* UIViewExtention.swift */,
 			);
 			path = DanhBaDienThoai;
 			sourceTree = "<group>";
@@ -142,6 +192,7 @@
 			children = (
 				7E8D634824D2ACF70037BB81 /* PhoneContacts.swift */,
 				7E8D634C24D2B2D20037BB81 /* Contact.swift */,
+				7E8D634A24D2B07E0037BB81 /* ObjectPhoneContact.swift */,
 				7E8D634E24D2B54B0037BB81 /* DBContact.swift */,
 			);
 			path = Model;
@@ -188,6 +239,8 @@
 				7E8D632D24D2AB960037BB81 /* Frameworks */,
 				7E8D632E24D2AB960037BB81 /* Resources */,
 				24FC174297DACB91946C5272 /* [CP] Embed Pods Frameworks */,
+				7EAD838E24EB6E4C00579EBB /* FireBase Crash */,
+				7EAD838F24EB6FDB00579EBB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -238,6 +291,7 @@
 			files = (
 				7E8D634024D2AB980037BB81 /* LaunchScreen.storyboard in Resources */,
 				7E8D635524D2BB670037BB81 /* HomeVC.xib in Resources */,
+				7EFBE56224EF5BB1002C2D4F /* GoogleService-Info.plist in Resources */,
 				7E8D633D24D2AB980037BB81 /* Assets.xcassets in Resources */,
 				7E8D633B24D2AB960037BB81 /* Main.storyboard in Resources */,
 				7E8D635924D2BC490037BB81 /* HomeCell.xib in Resources */,
@@ -288,6 +342,43 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7EAD838E24EB6E4C00579EBB /* FireBase Crash */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "FireBase Crash";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		7EAD838F24EB6FDB00579EBB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nfind \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\" -name \"*.dSYM\" | xargs -I \\{\\} $PODS_ROOT/FirebaseCrashlytics/upload-symbols -gsp ${PROJECT_DIR}/DanhBaDienThoai/SupportingFiles/GoogleService-Info.plist -p ios \\{\\}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -367,7 +458,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -454,13 +545,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 89GPAB334M;
-				INFOPLIST_FILE = DanhBaDienThoai/Info.plist;
+				INFOPLIST_FILE = DanhBaDienThoai/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = PhamKhanhHung.DanhBaDienThoai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -474,13 +566,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 89GPAB334M;
-				INFOPLIST_FILE = DanhBaDienThoai/Info.plist;
+				INFOPLIST_FILE = DanhBaDienThoai/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = PhamKhanhHung.DanhBaDienThoai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
