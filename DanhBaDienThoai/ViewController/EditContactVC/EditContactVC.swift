@@ -9,27 +9,24 @@
 import UIKit
 
 class EditContactVC: UIViewController {
-
-    var contactEdit:Contact?
-    
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPhoneNumber: UITextField!
     @IBOutlet weak var tfLastName: UITextField!
     @IBOutlet weak var tfFirstName: UITextField!
     @IBOutlet weak var imgAvata: UIImageView!
+    
+    var contactEdit:Contact?
     let picker = UIImagePickerController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNv()
         initUI()
     }
-
     
     @IBAction func hendleDelete(_ sender: Any) {
         print("delete")
@@ -37,7 +34,7 @@ class EditContactVC: UIViewController {
         data.deleteByID(id: contactEdit?.id ?? "" )
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
-   
+    
     @IBAction func hebdleReset(_ sender: Any) {
         print("reset")
         initUI()
@@ -46,52 +43,49 @@ class EditContactVC: UIViewController {
     @IBAction func handleAddAvata(_ sender: Any) {
         chooseAvata()
     }
+    
     @IBAction func handleAvata(_ sender: Any) {
         chooseAvata()
     }
+    
     func chooseAvata()  {
-            let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-            let cameraAction = UIAlertAction(title: "Camera", style: UIAlertAction.Style.default)
-                {
-                    UIAlertAction in
-                    self.openCamera()
-            }
-            let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertAction.Style.default)
-                {
-                    UIAlertAction in
-                    self.openGallary()
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
-                {
-                    UIAlertAction in
-            }
-
-            // Add the actions
-            
-            picker.delegate = self
-            alert.addAction(cameraAction)
-            alert.addAction(gallaryAction)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertAction.Style.default)
+        {
+            UIAlertAction in
+            self.openCamera()
         }
-        func openCamera(){
-            if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
-                picker.sourceType = UIImagePickerController.SourceType.camera
-                self.present(picker, animated: true, completion: nil)
-            }else{
-    //            let alert = UIAlertView()
-    //            alert.title = "Warning"
-    //            alert.message = "You don't have camera"
-    //            alert.addButtonWithTitle("OK")
-    //            alert.show()
-            }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertAction.Style.default)
+        {
+            UIAlertAction in
+            self.openGallary()
         }
-        func openGallary(){
-            picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+        {
+            UIAlertAction in
+        }
+        picker.delegate = self
+        alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openCamera(){
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
+            picker.sourceType = UIImagePickerController.SourceType.camera
             self.present(picker, animated: true, completion: nil)
+        }else{
+            print("Erro")
         }
-
+    }
+    
+    func openGallary(){
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
 }
+
 extension EditContactVC {
     func initUI()  {
         tfFirstName.text = contactEdit?.firstName ?? ""
@@ -102,23 +96,22 @@ extension EditContactVC {
             imgAvata.image = UIImage(data: (contactEdit?.avatarData)!)
             self.imgAvata.layer.cornerRadius = 50
             self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
-
+            
         }else{
             imgAvata.image = #imageLiteral(resourceName: "Bitmap")
             self.imgAvata.layer.cornerRadius = 50
             self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
-
         }
-        
     }
+    
     func setupNv() {
         let left = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.backHome))
         let right = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.Done))
         self.navigationItem.rightBarButtonItem = right
         self.navigationItem.leftBarButtonItem = left
     }
+    
     @objc func backHome() {
-        
         self.dismiss(animated: true, completion: nil)
     }
     @objc func Done() {
@@ -128,7 +121,6 @@ extension EditContactVC {
             contactEdit?.lastName = tfLastName.text ?? ""
             contactEdit?.phoneNumber = tfPhoneNumber.text ?? ""
             contactEdit?.email = tfEmail.text ?? ""
-            
             let img:UIImage = #imageLiteral(resourceName: "Bitmap")
             if self.imgAvata.image != img {
                 contactEdit?.avatarData = self.imgAvata.image?.jpegData(compressionQuality: 0.1)
@@ -137,6 +129,7 @@ extension EditContactVC {
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
     func checkTf() -> Bool {
         if tfLastName.text == "" && tfFirstName.text == "" {
             Helper.alert(msg: "First name and Last name  can't be simultaneous blank. Please try again later", target: self)
@@ -146,9 +139,8 @@ extension EditContactVC {
         }
     }
 }
+
 extension EditContactVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    //MARK:UIImagePickerControllerDelegate
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as! UIImage
         self.imgAvata.image = image

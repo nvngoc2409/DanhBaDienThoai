@@ -11,26 +11,25 @@ import Foundation
 class ContatDetailVC: UIViewController {
     
     @IBOutlet weak var btnMessage: UIButton!
-    
+    @IBOutlet weak var lbImage: UILabel!
     @IBOutlet weak var btnEmail: UIButton!
     @IBOutlet weak var btnVideo: UIButton!
     @IBOutlet weak var btnCall: UIButton!
     @IBOutlet weak var lbEmail: UILabel!
-    
     @IBOutlet weak var lbPhoneNumber: UILabel!
-    
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var imgAvata: UIImageView!
+    
     var contactDel:Contact?
-    var idcontact:String = ""
+    var imgtext:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("ContactDetailVC")
+        initUI()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNv()
         initData()
     }
     
@@ -40,10 +39,11 @@ class ContatDetailVC: UIViewController {
         self.navigationItem.rightBarButtonItem = right
         self.navigationItem.leftBarButtonItem = left
     }
+    
     @objc func backHome() {
-        
         self.dismiss(animated: true, completion: nil)
     }
+    
     @objc func editContact() {
         let vc = EditContactVC(nibName: "EditContactVC", bundle: nil)
         vc.contactEdit = contactDel
@@ -56,7 +56,7 @@ class ContatDetailVC: UIViewController {
         if contactDel?.phoneNumber == "" {
             Helper.alert(msg: "Phone number is empty. Please try again later! ", target: self)
         }else{
-            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "123")
+            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "")
             guard MFMessageComposeViewController.canSendText() else {
                 return
             }
@@ -67,11 +67,12 @@ class ContatDetailVC: UIViewController {
             self.present(messageVC, animated: false, completion: nil)
         }
     }
+    
     @IBAction func handleCall(_ sender: Any) {
         if contactDel?.phoneNumber.count == 0 {
             Helper.alert(msg: "Phone number is empty. Please try again later! ", target: self)
         }else{
-            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "123")
+            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "")
             let phone = "tel://\(phoneNumber)"
             let url = NSURL(string: phone)
             if let url1 = url {
@@ -82,11 +83,12 @@ class ContatDetailVC: UIViewController {
         }
         
     }
+    
     @IBAction func handleVideo(_ sender: Any) {
         if contactDel?.phoneNumber == "" {
             Helper.alert(msg: "Phone number is empty. Please try again later! ", target: self)
         }else{
-            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "123")
+            let phoneNumber:String =  checkPhoneNumber(number:contactDel?.phoneNumber ?? "")
             let phone = "facetime://\(phoneNumber)"
             let url = NSURL(string: phone)
             if let url1 = url {
@@ -96,51 +98,52 @@ class ContatDetailVC: UIViewController {
             }
         }
     }
+    
     @IBAction func handleMail(_ sender: Any) {
         sendEmail(email: contactDel?.email ?? "")
     }
+    
     @IBAction func handleDeleteContact(_ sender: Any) {
         let data:DBContact = DBContact.init()
         data.deleteByID(id: contactDel?.id ?? "" )
         self.dismiss(animated: true, completion: nil)
-        
     }
-    
 }
 extension ContatDetailVC {
     func initUI()  {
-        lbName.text = (contactDel?.firstName ?? "") + " " + (contactDel?.lastName ?? "")
-        lbPhoneNumber.text = contactDel?.phoneNumber ?? ""
-        lbEmail.text = contactDel?.email ?? ""
-        if contactDel?.avatarData != nil {
-            imgAvata.image = UIImage(data: (contactDel?.avatarData)!)
-            self.imgAvata.layer.cornerRadius = 50
-            self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
-            
-        }else{
-            imgAvata.image = #imageLiteral(resourceName: "Bitmap")
-            self.imgAvata.layer.cornerRadius = 50
-            self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
-            
-        }
+        setText()
         btnEmail.layer.cornerRadius = 20
         btnCall.layer.cornerRadius = 20
         btnVideo.layer.cornerRadius = 20
         btnMessage.layer.cornerRadius = 20
-        
+        setupNv()
     }
+    
     func initData()  {
-//        let db:DBContact = DBContact.init()
-//        let dbContact:[Contact] = db.getContact(id: contactDel!.id)
-//        contactDel = dbContact.first
-        initUI()
+        let data:DBContact = DBContact.init()
+        let k:[Contact] = data.getContact(id: contactDel?.id ?? " ")
+        contactDel = k.first
+        setText()
+    }
+    func setText()  {
+        lbImage.text =  imgtext
+        lbName.text = (contactDel?.firstName ?? "") + " " + (contactDel?.lastName ?? "")
+        lbPhoneNumber.text = contactDel?.phoneNumber ?? ""
+        lbEmail.text = contactDel?.email ?? ""
+        if contactDel?.avatarData != nil {
+            imgAvata.isHidden = false
+            imgAvata.image = UIImage(data: (contactDel?.avatarData)!)
+            self.imgAvata.layer.cornerRadius = 50
+            self.imgAvata.contentMode = UIView.ContentMode.scaleAspectFill
+        }else{
+            imgAvata.isHidden = true
+        }
     }
     func checkPhoneNumber(number:String) -> String {
         var pNEdit:String = ""
         let phoneNumberarr:[Character] = [Character].init(contactDel?.phoneNumber ?? " ")
         if phoneNumberarr.first == "+" {
             pNEdit = "+"
-            
             for i in 1..<phoneNumberarr.count {
                 switch (phoneNumberarr[i]){
                 case "0","1","2","3","4","5","6","7","8","9" :
@@ -150,13 +153,10 @@ extension ContatDetailVC {
                 default :
                     Helper.alert(msg: "Phone numbers formatted incorrectly. Please try again later!", target: self )
                     break
-                    
                 }
             }
-            
         }else{
             pNEdit = ""
-            
             for i in 0..<phoneNumberarr.count {
                 switch (phoneNumberarr[i]){
                 case "0","1","2","3","4","5","6","7","8","9" :
@@ -166,22 +166,17 @@ extension ContatDetailVC {
                 default :
                     Helper.alert(msg: "Phone numbers formatted incorrectly. Please try again later!", target: self )
                     break
-                    
                 }
             }
         }
         return pNEdit
     }
-    
-    
-    
-
-    
 }
+
 extension ContatDetailVC:MFMessageComposeViewControllerDelegate{
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch (result.rawValue) {
-            case MessageComposeResult.cancelled.rawValue:
+        case MessageComposeResult.cancelled.rawValue:
             print("Message was cancelled")
             self.dismiss(animated: true, completion: nil)
         case MessageComposeResult.failed.rawValue:
@@ -203,15 +198,13 @@ extension ContatDetailVC:MFMailComposeViewControllerDelegate{
             mail.mailComposeDelegate = self
             mail.setToRecipients([email])
             mail.setSubject("Subject")
-
             mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
-
             self.present(mail, animated: true)
         } else {
-            // show failure alert
+            print("false")
         }
     }
-
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }

@@ -8,69 +8,62 @@
 
 import UIKit
 import Foundation
-import KRProgressHUD
 import ContactsUI
 
 class HomeVC: UIViewController {
+    @IBOutlet weak var SearchBar: UISearchBar!
+    @IBOutlet weak var TvMain: UITableView!
     
-    let database:DBContact = DBContact.init()
+    var database:DBContact = DBContact.init()
     var arrContact:[Contact] = []
     var searchData:[Contact] = []
     var convSearchData:[[Contact]] = []
-    var refreshControl = UIRefreshControl()
-
-    @IBOutlet weak var SearchBar: UISearchBar!
-    @IBOutlet weak var TvMain: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
-        print("home page")
-        TvMain.separatorStyle = .singleLine
-        self.SearchBar.delegate = self
-        self.TvMain.sectionHeaderHeight = 50
-        self.hideKeyboardWhenTappedAround()
-        TvMain.keyboardDismissMode = .interactive
-        
+        initUI()
+//        let button = UIButton(type: .roundedRect)
+//        button.frame = CGRect(x: 80, y: 200, width: 100, height: 30)
+//        button.setTitle("Crash", for: [])
+//        button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
+//        view.addSubview(button)
     }
+    
+    @IBAction func crashButtonTapped(_ sender: AnyObject) {
+        fatalError()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNav()
         initData()
-        initUI()
-        self.SearchBar.endEditing(false)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-            KRProgressHUD.show()
-            self.getData()
-        })
     }
     
-    
-    
-    
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.TvMain.reloadData()
+    }
 }
+
 extension HomeVC {
     func initUI() {
         TvMain.dataSource = self
         TvMain.delegate = self
         TvMain.register(UINib.init(nibName: "HomeCell", bundle: nil), forCellReuseIdentifier: "HomeCell")
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-        refreshControl.tintColor = #colorLiteral(red: 0.9764705882, green: 0.2235294118, blue: 0.3882352941, alpha: 1)
-        refreshControl.isHidden = false
-    }
-    
-    @objc func refresh() {
-        initData()
+        self.SearchBar.endEditing(false)
+        TvMain.separatorStyle = .singleLine
+        self.SearchBar.delegate = self
+        self.TvMain.sectionHeaderHeight = 50
+        self.hideKeyboardWhenTappedAround()
+        TvMain.keyboardDismissMode = .interactive
+        setupNav()
     }
     
     func initData() {
-        
-        
+        database = DBContact.init()
         arrContact = database.read()
-        
         if arrContact.count == 0 {
             checkPermissionForCNContacts()
-//            getData()
         } else {
             searchData = arrContact.sorted(by: { (c1:Contact, c2:Contact) -> Bool in
                 return c1.firstName.lowercased() < c2.firstName.lowercased()
@@ -96,10 +89,6 @@ extension HomeVC {
             return c1.firstName.lowercased() < c2.firstName.lowercased()
         })
         convSearchData = converterArr(arr1d: searchData)
-        DispatchQueue.main.async {
-            self.TvMain.reloadData()
-        }
-        KRProgressHUD.dismiss()
     }
     
     func checkPermissionForCNContacts() {
@@ -107,7 +96,6 @@ extension HomeVC {
             case .notDetermined:
                 CNContactStore().requestAccess(for: .contacts, completionHandler: { granted, error in
                     if granted == true {
-                        KRProgressHUD.show()
                         self.getData()
                     }
                 })
@@ -115,7 +103,6 @@ extension HomeVC {
                 // Show custom alert
                 break
             case .authorized:
-                KRProgressHUD.show()
                 self.getData()
                 break
             @unknown default:
@@ -138,7 +125,6 @@ extension HomeVC {
     func converterArr(arr1d:[Contact]) -> [[Contact]] {
         var charArr:[Character] = []
         var arrConv:[[Contact]] = []
-        
         if arr1d.count != 0 {
             for i in arr1d {
                 let k = checkChar(charArr: charArr, char: i.firstName.first ?? (i.lastName.first ?? " ") )
@@ -155,6 +141,7 @@ extension HomeVC {
         }
         return arrConv
     }
+    
     func checkChar(charArr:[Character],char:Character) -> Int {
         for (i,value) in charArr.enumerated() {
             
@@ -165,8 +152,8 @@ extension HomeVC {
         
         return -1
     }
-    
 }
+
 extension HomeVC:UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
@@ -177,9 +164,9 @@ extension HomeVC:UITableViewDataSource{
 //        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 18))
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 30))
         if convSearchData[section].first?.firstName.count != 0 {
-            label.text = convSearchData[section].first?.firstName.first?.uppercased()
+            label.text = convSearchData[section].first?.firstName.first?.uppercased() ?? " "
         }else{
-            label.text = convSearchData[section].first?.lastName.first?.uppercased()
+            label.text = convSearchData[section].first?.lastName.first?.uppercased() ?? " "
         }
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -206,6 +193,14 @@ extension HomeVC:UITableViewDelegate {
         let vc = ContatDetailVC(nibName: "ContatDetailVC", bundle: nil)
 //        vc.idcontact =
             vc.contactDel = Contact.init(contact: convSearchData[indexPath.section][indexPath.row])
+        if convSearchData[indexPath.section].first!.firstName.count != 0 {
+            vc.imgtext = convSearchData[indexPath.section].first?.firstName.first?.uppercased() ?? " "
+            if convSearchData[indexPath.section].first?.lastName.count != 0 {
+                vc.imgtext +=  convSearchData[indexPath.section].first?.lastName.first?.uppercased() ?? " "
+            }
+        }else{
+            vc.imgtext = convSearchData[indexPath.section].first?.lastName.first?.uppercased() ?? " "
+        }
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
@@ -236,6 +231,7 @@ extension HomeVC: UISearchBarDelegate {
         searchData = searchData.sorted(by: { (c1:Contact, c2:Contact) -> Bool in
             return c1.firstName.lowercased() < c2.firstName.lowercased()
         })
+        self.convSearchData.removeAll()
         convSearchData = converterArr(arr1d: searchData)
         self.TvMain.reloadData()
     }

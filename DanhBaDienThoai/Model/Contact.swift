@@ -9,16 +9,14 @@
 import Foundation
 import ContactsUI
 import SQLite3
-
 class Contact: NSObject {
     var id:String = ""
-    
     var firstName: String = ""
     var lastName: String = ""
     var avatarData: Data?
     var phoneNumber: String = ""
     var email: String = ""
-
+    
     init(contact: CNContact) {
         id = UUID.init().uuidString
         firstName = contact.givenName
@@ -28,6 +26,7 @@ class Contact: NSObject {
         email  = (contact.emailAddresses.first?.value ?? "") as String
         
     }
+    
     init(id:String,firstName:String, lastName:String,avatarData:Data? ,phoneNumber:String,email:String) {
         self.id = id
         self.firstName = firstName
@@ -36,6 +35,7 @@ class Contact: NSObject {
         self.phoneNumber = phoneNumber
         self.email = email
     }
+    
     init(contact:Contact) {
         self.id = contact.id
         self.firstName = contact.firstName
@@ -44,6 +44,7 @@ class Contact: NSObject {
         self.phoneNumber = contact.phoneNumber
         self.email = contact.email
     }
+    
     override init() {
         super.init()
     }
